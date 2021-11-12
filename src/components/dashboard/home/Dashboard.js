@@ -22,45 +22,61 @@ const Dashboard = () => {
   return (
     <div>
       <Row>
-        <Col lg={3} className="bg-warning">
+        <Col lg={3} className="bg-custom dashboard-bar">
           <ul className="dashboard-list">
             <Link to="/" style={textDecoration}>
-              <li>HOME</li>
+              <li>
+                <i className="bi bi-house"></i> HOME
+              </li>
             </Link>
             <hr />
             <Link to={`${path}`} style={textDecoration}>
-              <li>MY ORDER</li>
+              <li>
+                <i className="bi bi-bag-check"></i> MY ORDER
+              </li>
             </Link>
             <Link to={`${url}/addReview`} style={textDecoration}>
-              <li>ADD REVIEW</li>
+              <li>
+                <i className="bi bi-plus-circle"></i> ADD REVIEW
+              </li>
             </Link>
             <Link to={`${url}/payment`} style={textDecoration}>
-              <li>PAYMENT</li>
+              <li>
+                <i className="bi bi-wallet2"></i> PAYMENT
+              </li>
             </Link>
             <hr />
             {admin && (
               <div>
                 <Link to={`${url}/manageOrders`} style={textDecoration}>
-                  <li>MANAGE ORDERS</li>
+                  <li>
+                    <i className="bi bi-bag-check"></i> MANAGE ORDERS
+                  </li>
                 </Link>
                 <Link to={`${url}/manageProducts`} style={textDecoration}>
-                  <li>MANAGE PRODUCTS</li>
+                  <li>
+                    <i className="bi bi-gear"></i> MANAGE PRODUCTS
+                  </li>
                 </Link>
                 <Link to={`${url}/addProduct`} style={textDecoration}>
-                  <li>ADD PRODUCT</li>
+                  <li>
+                    <i className="bi bi-plus-circle"></i> ADD PRODUCT
+                  </li>
                 </Link>
                 <Link to={`${url}/makeAdmin`} style={textDecoration}>
-                  <li>MAKE ADMIN</li>
+                  <li>
+                    <i className="bi bi-shield-lock"></i> MAKE ADMIN
+                  </li>
                 </Link>
                 <hr />
               </div>
             )}
-            <Button variant="danger" onClick={logOut}>
-              LOGOUT
+            <Button variant="danger" onClick={logOut} className="ms-3 mt-lg-3">
+              <i className="bi bi-box-arrow-right"></i> LOG OUT
             </Button>
           </ul>
         </Col>
-        <Col lg={9}>
+        <Col lg={9} style={{ background: "ghostwhite" }}>
           <Switch>
             <Route exact path={path}>
               <MyOrder />

@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const Login = () => {
@@ -22,25 +23,36 @@ const Login = () => {
   };
 
   return (
-    <Container className=" text-center">
-      <h3 className=" text-center fw-bold">Login to your account</h3>
+    <Container className=" text-center login-div">
+      <h3 className="fw-bold top-margin text-uppercase text-dark mt-5 p-3">
+        Login to your account
+      </h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="email"
           placeholder="Your Email"
           {...register("email")}
           required
+          className="p-2 mt-3 w-75 rounded-3"
         />
         <br />
         <input
           type="password"
-          placeholder="Your Password [minimum 6 characters long]"
+          placeholder="Your Password"
           {...register("password")}
           required
+          className="p-2 mt-3 w-75 rounded-3"
         />
         <br />
-        <input type="submit" value="Login" />
+        <input
+          type="submit"
+          value="LOG IN"
+          className="btn bg-white my-3 py-2 text-dark fw-bold my-4 px-5"
+        />
       </form>
+      <Link to="/register" className=" text-decoration-none fw-bold text-white">
+        Need an account? Register here
+      </Link>
     </Container>
   );
 };

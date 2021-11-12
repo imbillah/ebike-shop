@@ -10,14 +10,18 @@ const Reviews = () => {
     axios("https://protected-oasis-88562.herokuapp.com/reviews").then((res) =>
       setReviews(res.data)
     );
-  }, []);
+  }, [reviews]);
   return (
     <Container>
-      <h2>Our Customer reviews: {reviews.length}</h2>
+      <div className="text-center top-margin text-uppercase text-custom mb-5">
+        <h6 className="fw-bold">Our Inspiration</h6>
+        <h2 className="fw-bold">Customer Review & Testimonial</h2>
+      </div>
+
       <Row>
         {reviews.map((review) => (
           <Col lg={6} key={review._id}>
-            <div>
+            <div className="rd-custom">
               <div className="d-flex p-2 shadow rounded-3">
                 <img
                   src={profile}
@@ -26,9 +30,9 @@ const Reviews = () => {
                   alt=""
                 />
                 <div className="p-3">
-                  <h4>{review.name}</h4>
-                  <h6>{review.country}</h6>
-                  <p className="text-muted">{review.comment}</p>
+                  <h3>{review.name}</h3>
+                  <h6>From {review.country}</h6>
+                  <p className="text-muted lh-lg mt-3">{review.comment}</p>
                   <h6>
                     {`${review.ratings} `}
                     <Rating

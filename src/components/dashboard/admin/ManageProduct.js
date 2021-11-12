@@ -25,13 +25,19 @@ const ManageProduct = () => {
     }
   };
   return (
-    <Container>
-      <h2>Manage all products:{products.length}</h2>
-      <Table>
+    <div className="mx-lg-5">
+      <h2 className="text-center fw-bold text-uppercase text-custom my-3">
+        Manage all products
+      </h2>
+      <h5 className="text-center fw-bold text-custom my-3">
+        Total Products: {products.length}
+      </h5>
+      <Table variant="dark">
         <thead>
           <tr>
             <th scope="col">SL</th>
             <th scope="col">Product Name</th>
+            <th scope="col">Brand</th>
             <th scope="col">Price</th>
             <th scope="col">Total Order</th>
             <th scope="col">Action</th>
@@ -42,6 +48,7 @@ const ManageProduct = () => {
             <tr>
               <th scope="row">{index}</th>
               <td>{product.pname}</td>
+              <td>{product.brand}</td>
               <td>{product.price}</td>
               <td>{product.order}</td>
               <td>
@@ -56,7 +63,7 @@ const ManageProduct = () => {
           </tbody>
         ))}
       </Table>
-    </Container>
+    </div>
   );
 };
 

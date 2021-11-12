@@ -1,16 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import Order from "../../private/Order";
 
 const ManageOrder = () => {
   const [userOrders, setUserOrders] = useState([]);
 
   useEffect(() => {
-    axios("https://protected-oasis-88562.herokuapp.com/orders").then((res) =>
-      setUserOrders(res.data)
+    fetch("https://protected-oasis-88562.herokuapp.com/orders").then((res) =>
+      res.json().then((data) => setUserOrders(data))
     );
-  }, [userOrders]);
+  }, []);
 
   // updating product status
   const status = {
@@ -39,40 +38,44 @@ const ManageOrder = () => {
     }
   };
   return (
-    <div>
-      <h2>Manage all users orders</h2>
-      <Table>
+    <div className="mx-lg-5">
+      <h2 className="text-center fw-bold text-uppercase text-custom my-4">
+        Manage all user's orders
+      </h2>
+      <h5 className="text-center fw-bold text-custom my-3">
+        Total Orders: {userOrders.length}
+      </h5>
+      <Table variant="dark">
         <thead>
           <tr>
-            <th scope="col">SL</th>
             <th scope="col">User Name</th>
-            <th scope="col">Service Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Product Name</th>
             <th scope="col">Status</th>
-            <th scope="col">Action</th>
-            <th scope="col">Action</th>
+            <th colSpan="2" className="text-center">
+              Action
+            </th>
           </tr>
         </thead>
-        {userOrders.map((order, index) => (
+        {userOrders.map((order) => (
           <tbody key={order._id}>
             <tr>
-              <th scope="row">{index}</th>
-              <td>{order.name}</td>
+              <th scope="row">{order.name}</th>
+              <td>{order.email}</td>
               <td>{order.productname}</td>
               <td>{order.status}</td>
-              <td>
+              <td colSpan="2" className="text-center">
                 <button
                   onClick={() => approveOrder(order._id)}
                   className="btn btn-success"
                 >
-                  Update Status
+                  UPDATE STATUS
                 </button>
-              </td>
-              <td>
                 <button
                   onClick={() => deleteHandler(order._id)}
-                  className="btn btn-danger"
+                  className="btn btn-danger ms-lg-3 px-3"
                 >
-                  Delete
+                  DELETE
                 </button>
               </td>
             </tr>

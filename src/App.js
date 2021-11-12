@@ -23,7 +23,9 @@ function App() {
           <PrivateRoute path="/order/:id">
             <Order />
           </PrivateRoute>
-          <Route path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/dashboard">
+            <Dashboard />
+          </PrivateRoute>
         </Switch>
       </Router>
     </AuthProvider>

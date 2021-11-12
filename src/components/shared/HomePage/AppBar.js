@@ -1,19 +1,33 @@
 import React from "react";
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import profile from "../../../media/images/profile.png";
 
 const navStyle = {
   textDecoration: "none",
   color: "black",
+  fontSize: "17px",
+  fontWeight: 500,
 };
 const AppBar = () => {
   const { user, logOut } = useAuth();
   return (
     <Navbar collapseOnSelect expand="lg" bg="light">
       <Container>
-        <Navbar.Brand>eBike</Navbar.Brand>
+        <Navbar.Brand>
+          <NavLink
+            to="/"
+            activeStyle={{
+              fontWeight: "bold",
+              fontSize: "2rem",
+              color: "#777af2",
+              textDecoration: "none",
+            }}
+          >
+            eBike
+          </NavLink>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
@@ -53,7 +67,7 @@ const AppBar = () => {
                   alt=""
                 />
               </Nav.Link>
-              <Nav.Link>{user.displayName}</Nav.Link>
+              <Nav.Link style={navStyle}>{user.displayName}</Nav.Link>
               <Nav.Link>
                 <Button variant="primary" onClick={logOut}>
                   Log Out
@@ -64,12 +78,12 @@ const AppBar = () => {
             <Nav>
               <Nav.Link>
                 <Link to="/login">
-                  <Button variant="warning">Login</Button>
+                  <Button className="bg-custom">LOGIN</Button>
                 </Link>
               </Nav.Link>
               <Nav.Link>
                 <Link to="/register">
-                  <Button variant="warning">Register</Button>
+                  <Button className="bg-custom">REGISTER</Button>
                 </Link>
               </Nav.Link>
             </Nav>

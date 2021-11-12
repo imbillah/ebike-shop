@@ -20,14 +20,16 @@ const AddReview = () => {
   };
   return (
     <Container>
-      <h2>Add your Reviews here</h2>
+      <h3 className="fw-bold  text-uppercase text-custom my-4">
+        Add your Review
+      </h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         {user.displayName && (
           <input
             readOnly={true}
             defaultValue={user.displayName}
             {...register("name")}
-            className="p-2 m-2 w-75"
+            className="p-2 mt-3 w-75"
           />
         )}
         <br />
@@ -36,25 +38,26 @@ const AddReview = () => {
             readOnly={true}
             defaultValue={user.email}
             {...register("email")}
-            className="p-2 m-2 w-75"
+            className="p-2 mt-3 w-75"
           />
         )}
         <textarea
           {...register("comment")}
-          className="p-2 m-2 w-75"
+          className="p-2 mt-3 w-75"
           placeholder="Your comment"
           required
         />
         <input
           type="text"
           {...register("country")}
-          className="p-2 m-2 w-75"
+          className="p-2 my-3 w-75"
           placeholder="Your Country"
           required
         />
+        <p>Ratings:</p>
         <select
           {...register("ratings")}
-          className="p-2 m-2 w-75"
+          className="p-2 w-75"
           placeholder="Rating"
         >
           <option>0</option>
@@ -67,8 +70,8 @@ const AddReview = () => {
         <br />
         <input
           type="submit"
-          value="Add Review"
-          className="btn btn-warning my-3 py-2 fw-bold rounded-pill"
+          value="ADD REVIEW"
+          className="btn bg-custom my-3 py-2 text-white mt-4"
         />
       </form>
     </Container>

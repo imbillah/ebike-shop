@@ -19,13 +19,14 @@ const AddProduct = () => {
   };
   return (
     <Container>
-      <h2>Add product as Admin</h2>
+      <h2 className="fw-bold  text-uppercase text-custom my-4">Add product</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"
           placeholder="Product Name"
           {...register("pname")}
           required
+          className="p-2 mt-3 w-75"
         />
         <br />
         <input
@@ -33,6 +34,7 @@ const AddProduct = () => {
           placeholder="Image url"
           {...register("image")}
           required
+          className="p-2 mt-3 w-75"
         />
         <br />
         <input
@@ -40,6 +42,7 @@ const AddProduct = () => {
           placeholder="Product Brand"
           {...register("brand")}
           required
+          className="p-2 mt-3 w-75"
         />
         <br />
         <input
@@ -47,22 +50,29 @@ const AddProduct = () => {
           placeholder="Price"
           {...register("price")}
           required
+          className="p-2 mt-3 w-75"
         />
         <br />
         <input
           type="number"
-          placeholder="Already Order number"
+          placeholder="Already ordered number"
           {...register("order")}
           required
+          className="p-2 mt-3 w-75"
         />
         <br />
         <textarea
-          placeholder="Peoduct Details"
+          placeholder="Product description"
           {...register("description")}
           required
+          className="p-2 mt-3 w-75"
         />
         <br />
-        <input type="submit" value="Add Product" />
+        <input
+          type="submit"
+          value="ADD PRODUCT"
+          className="btn bg-custom my-3 py-2 text-white mt-4"
+        />
       </form>
     </Container>
   );

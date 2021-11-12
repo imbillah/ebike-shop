@@ -102,7 +102,6 @@ const Order = () => {
         )}
         <br />
         <p>Quantity:</p>
-
         <select
           {...register("quantity")}
           className="p-2  w-75"

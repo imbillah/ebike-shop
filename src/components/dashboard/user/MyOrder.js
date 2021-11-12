@@ -28,20 +28,23 @@ const MyOrder = () => {
   };
   return (
     <div>
-      <h3>All your orders:{myOrders.length}</h3>
+      <h4 className="fw-bold text-uppercase text-custom my-4">
+        Products you have ordered : {myOrders.length}
+      </h4>
       <Row>
         {myOrders.map((order) => (
           <Col lg={6} key={order._id}>
             <div>
-              <div className="d-flex p-2 shadow rounded-3 mx-lg-4 mt-4">
+              <div className="d-flex p-2 shadow rd-custom mt-4">
                 <img
                   src={order.image}
                   className=" img-fluid w-25 me-3 rounded-3"
                   alt=""
                 />
                 <div>
-                  <h4>{order.productname}</h4>
-                  <h5>{order.date}</h5>
+                  <h4 className="mb-3">{order.productname}</h4>
+                  <h5>Order Date: {order.date}</h5>
+                  <h6>{order.price}</h6>
                   <h6>Status: {order.status}</h6>
                   <button
                     onClick={() => deletHandler(order._id)}

@@ -13,26 +13,34 @@ function Products() {
   }, []);
   return (
     <Container>
-      <h1>Our featured collection: {products.length}</h1>
+      <h2 className="text-center fw-bold top-margin text-uppercase text-custom mb-5">
+        Our featured collection
+      </h2>
       <Row className=" g-3">
         {products.map((product) => (
           <Col lg={4} kew={product._id}>
-            <Card className="h-100">
+            <Card className="h-100 rd-custom">
               <Card.Img
                 variant="top"
                 src={product.image}
                 className="h-75 img-fluid"
               />
               <Card.Body>
-                <Card.Title>{product.pname}</Card.Title>
+                <Card.Title>
+                  <h3> {product.pname}</h3>
+                </Card.Title>
                 <small>By {product.brand}</small>
-                <Card.Text>{product.description}</Card.Text>
+                <br />
+                <small>In Stock</small>
+                <Card.Text className="mt-3 text-muted lead">
+                  {product.description}
+                </Card.Text>
                 <Card.Title>${product.price}</Card.Title>
                 <p>
                   <small>{product.order} Ordered</small>
                 </p>
                 <Link to={`/order/${product._id}`}>
-                  <Button variant="primary">Add to cart</Button>
+                  <Button className="bg-custom">ADD TO CART</Button>
                 </Link>
               </Card.Body>
             </Card>

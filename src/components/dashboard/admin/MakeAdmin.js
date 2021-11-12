@@ -20,16 +20,22 @@ const MakeAdmin = () => {
     e.preventDefault();
   };
   return (
-    <div>
-      <h2>Make Another Admin</h2>
+    <div className="text-center">
+      <h2 className="fw-bold text-uppercase text-custom mt-5">Make an Admin</h2>
       <form onSubmit={handleSubmit}>
         <input
           onBlur={emailHandler}
           type="email"
-          placeholder="Enter email address"
+          placeholder="Enter user email address"
+          required
+          className="p-2 my-3 w-50"
         />
         <br />
-        <input type="submit" value="Make Admin" />
+        <input
+          type="submit"
+          value="MAKE ADMIN"
+          className="btn bg-custom my-3 py-2 text-white mt-2"
+        />
       </form>
     </div>
   );
