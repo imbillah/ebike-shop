@@ -16,13 +16,27 @@ const AppBar = () => {
         <Navbar.Brand>eBike</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mx-auto">
+          <Nav className="ms-auto">
             <Nav.Link>
               <Link to="/" style={navStyle}>
                 Home
               </Link>
             </Nav.Link>
-            <Nav.Link>Products</Nav.Link>
+            <Nav.Link>
+              <Link to="/explore" style={navStyle}>
+                Products
+              </Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/about" style={navStyle}>
+                About Us
+              </Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/contact" style={navStyle}>
+                Contact Us
+              </Link>
+            </Nav.Link>
           </Nav>
           {user?.email ? (
             <Nav className="align-items-center">

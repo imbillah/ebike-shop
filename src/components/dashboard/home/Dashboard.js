@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Button } from "react-bootstrap";
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import ManageOrder from "../admin/ManageOrder";
 import ManageProduct from "../admin/ManageProduct";
@@ -8,6 +8,7 @@ import AddReview from "../user/AddReview";
 import MyOrder from "../user/MyOrder";
 import Payment from "../user/Payment";
 import MakeAdmin from "../admin/MakeAdmin";
+import AdminRoute from "../../private/AdminRoute";
 import useAuth from "../../../hooks/useAuth";
 
 const textDecoration = {
@@ -15,7 +16,7 @@ const textDecoration = {
   textDecoration: "none",
 };
 const Dashboard = () => {
-  const { admin } = useAuth();
+  const { admin, logOut } = useAuth();
   let { path, url } = useRouteMatch();
 
   return (
@@ -54,10 +55,9 @@ const Dashboard = () => {
                 <hr />
               </div>
             )}
-
-            <Link to="/" style={textDecoration}>
-              <li>LOGOUT</li>
-            </Link>
+            <Button variant="danger" onClick={logOut}>
+              LOGOUT
+            </Button>
           </ul>
         </Col>
         <Col lg={9}>
@@ -71,18 +71,18 @@ const Dashboard = () => {
             <Route path={`${path}/payment`}>
               <Payment />
             </Route>
-            <Route path={`${path}/manageOrders`}>
+            <AdminRoute path={`${path}/manageOrders`}>
               <ManageOrder />
-            </Route>
-            <Route path={`${path}/manageProducts`}>
+            </AdminRoute>
+            <AdminRoute path={`${path}/manageProducts`}>
               <ManageProduct />
-            </Route>
-            <Route path={`${path}/addProduct`}>
+            </AdminRoute>
+            <AdminRoute path={`${path}/addProduct`}>
               <AddProduct />
-            </Route>
-            <Route path={`${path}/makeAdmin`}>
+            </AdminRoute>
+            <AdminRoute path={`${path}/makeAdmin`}>
               <MakeAdmin />
-            </Route>
+            </AdminRoute>
           </Switch>
         </Col>
       </Row>
