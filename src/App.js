@@ -9,6 +9,7 @@ import PrivateRoute from "./components/private/PrivateRoute";
 import ExploreProducts from "./components/shared/pages/ExploreProducts";
 import AboutUs from "./components/shared/pages/AboutUs";
 import ContactUs from "./components/shared/pages/ContactUs";
+import NotFound from "./components/shared/HomePage/NotFound";
 function App() {
   return (
     <AuthProvider>
@@ -26,6 +27,8 @@ function App() {
           <PrivateRoute path="/dashboard">
             <Dashboard />
           </PrivateRoute>
+          <Route path="/error" component={NotFound} />
+          <Route path="*" component={NotFound} />
         </Switch>
       </Router>
     </AuthProvider>

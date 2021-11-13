@@ -28,6 +28,14 @@ body {
   border-radius: 15px;
   margin-bottom: 100px;
 }
+iframe {
+  width: 70%;
+  height: 500px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #777af2;
+  border-radius: 15px;
+}
 /* dashboard styling */
 .dashboard-bar {
   height: 100vh;
@@ -48,12 +56,16 @@ body {
 .dashboard-list Link {
   text-decoration: none;
 }
-
+/* media query */
 @media only screen and (max-width: 768px) {
   .dashboard-bar {
     height: 100%;
   }
   .login-div {
     width: 95%;
+  }
+  iframe {
+    width: 100%;
+    height: 300px;
   }
 }

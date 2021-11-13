@@ -42,14 +42,14 @@ const ContactUs = () => {
                     required
                   ></textarea>
                 </div>
-                <button className="btn btn-warning">Submit</button>
+                <button className="btn bg-custom text-white">Submit</button>
               </form>
             </div>
           </Col>
           <Col lg={6}>
             <img
               src={contact}
-              className="img-fluid rounded-3 mt-4"
+              className="img-fluid rounded-3 mt-5 h-75"
               alt="aboutus"
             />
           </Col>

@@ -5,6 +5,7 @@ import { updateProfile } from "@firebase/auth";
 import useAuth from "../../../hooks/useAuth";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 
 const imgUrl = "https://i.postimg.cc/cLH479pD/profile.png";
 
@@ -22,11 +23,11 @@ const Register = () => {
           photoURL: imgUrl,
         }).then(() => {
           saveUser(data.email, data.name);
-          alert("Account created success");
+          swal("Good job!", "You account is created!", "success");
           history.push("/");
         });
       })
-      .catch((err) => alert(`${err.message}`));
+      .catch((err) => swal("Something Wrong", `${err.message}`, "error"));
   };
   return (
     <>
@@ -68,6 +69,11 @@ const Register = () => {
         <Link to="/login" className=" text-decoration-none fw-bold text-white">
           Already registered? Login Here
         </Link>
+        <div className="mt-5">
+          <Link to="/">
+            <i className="bi bi-house-fill fs-2 text-white"></i>
+          </Link>
+        </div>
       </Container>
     </>
   );

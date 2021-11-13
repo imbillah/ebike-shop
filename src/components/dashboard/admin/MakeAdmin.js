@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import swal from "sweetalert";
 
 const MakeAdmin = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ const MakeAdmin = () => {
       .put("https://protected-oasis-88562.herokuapp.com/users/admin", user)
       .then((res) => {
         if (res.data.modifiedCount) {
-          alert("Admin added");
+          swal("Done", "New admin added", "success");
           setEmail("");
         }
       });

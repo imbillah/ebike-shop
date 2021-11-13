@@ -69,7 +69,7 @@ const AppBar = () => {
               </Nav.Link>
               <Nav.Link style={navStyle}>{user.displayName}</Nav.Link>
               <Nav.Link>
-                <Button variant="primary" onClick={logOut}>
+                <Button className="bg-custom" onClick={logOut}>
                   Log Out
                 </Button>
               </Nav.Link>

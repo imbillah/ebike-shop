@@ -29,26 +29,10 @@ const Dashboard = () => {
                 <i className="bi bi-house"></i> HOME
               </li>
             </Link>
-            <hr />
-            <Link to={`${path}`} style={textDecoration}>
-              <li>
-                <i className="bi bi-bag-check"></i> MY ORDER
-              </li>
-            </Link>
-            <Link to={`${url}/addReview`} style={textDecoration}>
-              <li>
-                <i className="bi bi-plus-circle"></i> ADD REVIEW
-              </li>
-            </Link>
-            <Link to={`${url}/payment`} style={textDecoration}>
-              <li>
-                <i className="bi bi-wallet2"></i> PAYMENT
-              </li>
-            </Link>
-            <hr />
-            {admin && (
+            <hr className="text-white" />
+            {admin ? (
               <div>
-                <Link to={`${url}/manageOrders`} style={textDecoration}>
+                <Link to={`${path}`} style={textDecoration}>
                   <li>
                     <i className="bi bi-bag-check"></i> MANAGE ORDERS
                   </li>
@@ -68,9 +52,27 @@ const Dashboard = () => {
                     <i className="bi bi-shield-lock"></i> MAKE ADMIN
                   </li>
                 </Link>
-                <hr />
+              </div>
+            ) : (
+              <div>
+                <Link to={`${path}`} style={textDecoration}>
+                  <li>
+                    <i className="bi bi-gear"></i> MY ORDER
+                  </li>
+                </Link>
+                <Link to={`${url}/addReview`} style={textDecoration}>
+                  <li>
+                    <i className="bi bi-plus-circle"></i> ADD REVIEW
+                  </li>
+                </Link>
+                <Link to={`${url}/payment`} style={textDecoration}>
+                  <li>
+                    <i className="bi bi-wallet2"></i> PAYMENT
+                  </li>
+                </Link>
               </div>
             )}
+            <hr className="text-white" />
             <Button variant="danger" onClick={logOut} className="ms-3 mt-lg-3">
               <i className="bi bi-box-arrow-right"></i> LOG OUT
             </Button>
@@ -78,9 +80,15 @@ const Dashboard = () => {
         </Col>
         <Col lg={9} style={{ background: "ghostwhite" }}>
           <Switch>
-            <Route exact path={path}>
-              <MyOrder />
-            </Route>
+            {admin ? (
+              <Route exact path={path}>
+                <ManageOrder />
+              </Route>
+            ) : (
+              <Route exact path={path}>
+                <MyOrder />
+              </Route>
+            )}
             <Route path={`${path}/addReview`}>
               <AddReview />
             </Route>

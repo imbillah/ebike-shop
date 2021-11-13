@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { Container } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import swal from "sweetalert";
 
 const AddProduct = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -11,7 +12,7 @@ const AddProduct = () => {
       .post("https://protected-oasis-88562.herokuapp.com/products", data)
       .then((res) => {
         if (res.data.insertedId) {
-          alert("Product added successfully");
+          swal("Done!", "New product added", "success");
           reset();
         }
       })

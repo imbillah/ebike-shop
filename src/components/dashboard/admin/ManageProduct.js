@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Container, Table } from "react-bootstrap";
+import { Container, Spinner, Table } from "react-bootstrap";
+import swal from "sweetalert";
 
 const ManageProduct = () => {
   const [products, setProducts] = useState([]);
@@ -19,7 +20,7 @@ const ManageProduct = () => {
         .delete(`https://protected-oasis-88562.herokuapp.com/products/${id}`)
         .then((res) => {
           if (res.data.deletedCount) {
-            alert("Order Deleted");
+            swal("Done", "Product deleted successfully", "success");
           }
         });
     }
@@ -32,37 +33,43 @@ const ManageProduct = () => {
       <h5 className="text-center fw-bold text-custom my-3">
         Total Products: {products.length}
       </h5>
-      <Table variant="dark">
-        <thead>
-          <tr>
-            <th scope="col">SL</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">Brand</th>
-            <th scope="col">Price</th>
-            <th scope="col">Total Order</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        {products.map((product, index) => (
-          <tbody key={product._id}>
+      {products.length === 0 ? (
+        <div className="container text-center">
+          <Spinner animation="grow" variant="secondary" />
+        </div>
+      ) : (
+        <Table variant="dark">
+          <thead>
             <tr>
-              <th scope="row">{index}</th>
-              <td>{product.pname}</td>
-              <td>{product.brand}</td>
-              <td>{product.price}</td>
-              <td>{product.order}</td>
-              <td>
-                <button
-                  onClick={() => deleteHandler(product._id)}
-                  className="btn btn-danger"
-                >
-                  Delete
-                </button>
-              </td>
+              <th scope="col">SL</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Brand</th>
+              <th scope="col">Price</th>
+              <th scope="col">Total Order</th>
+              <th scope="col">Action</th>
             </tr>
-          </tbody>
-        ))}
-      </Table>
+          </thead>
+          {products.map((product, index) => (
+            <tbody key={product._id}>
+              <tr>
+                <th scope="row">{index}</th>
+                <td>{product.pname}</td>
+                <td>{product.brand}</td>
+                <td>{product.price}</td>
+                <td>{product.order}</td>
+                <td>
+                  <button
+                    onClick={() => deleteHandler(product._id)}
+                    className="btn btn-danger"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          ))}
+        </Table>
+      )}
     </div>
   );
 };

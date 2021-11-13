@@ -3,12 +3,13 @@ import { Container } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 import useAuth from "../../../hooks/useAuth";
 
 const Login = () => {
   const location = useLocation();
   const history = useHistory();
-  const { loginUser, setUser } = useAuth();
+  const { loginUser, setUser, user } = useAuth();
   const { register, handleSubmit } = useForm();
   const redirectUrl = location.state?.from || "/";
 
@@ -16,10 +17,10 @@ const Login = () => {
     loginUser(data.email, data.password)
       .then((res) => {
         setUser(res.user);
-        alert("Sign in Successful!");
+        swal("Logged in!", "Welcome Back!", "success");
         history.push(redirectUrl);
       })
-      .catch((err) => alert(`${err.message}`));
+      .catch((err) => swal("Something Wrong", `${err.message}`, "error"));
   };
 
   return (
@@ -53,6 +54,11 @@ const Login = () => {
       <Link to="/register" className=" text-decoration-none fw-bold text-white">
         Need an account? Register here
       </Link>
+      <div className="mt-5">
+        <Link to="/">
+          <i className="bi bi-house-fill fs-2 text-white"></i>
+        </Link>
+      </div>
     </Container>
   );
 };

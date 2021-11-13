@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
+import swal from "sweetalert";
 import useAuth from "../../../hooks/useAuth";
 
 const MyOrder = () => {
@@ -19,7 +20,7 @@ const MyOrder = () => {
       const url = `https://protected-oasis-88562.herokuapp.com/orders/${id}`;
       axios.delete(url).then((res) => {
         if (res.data.deletedCount > 0) {
-          alert("Booking canceled successfully");
+          swal("Done!", "Your order is cancelled", "success");
           const restOrders = myOrders.filter((order) => order._id !== id);
           setMyOrders(restOrders);
         }
@@ -31,11 +32,18 @@ const MyOrder = () => {
       <h4 className="fw-bold text-uppercase text-custom my-4">
         Products you have ordered : {myOrders.length}
       </h4>
-      <Row>
-        {myOrders.map((order) => (
-          <Col lg={6} key={order._id}>
-            <div>
-              <div className="d-flex p-2 shadow rd-custom mt-4">
+      {myOrders.length === 0 ? (
+        <div className="mt-5 text-danger fw-bold">
+          <h5>You didn't order any products yet</h5>
+        </div>
+      ) : (
+        <Row>
+          {myOrders.map((order) => (
+            <Col lg={6} key={order._id}>
+              <div
+                className="d-flex p-2 shadow rd-custom mt-4"
+                style={{ border: "1px solid #777af2" }}
+              >
                 <img
                   src={order.image}
                   className=" img-fluid w-25 me-3 rounded-3"
@@ -54,10 +62,10 @@ const MyOrder = () => {
                   </button>
                 </div>
               </div>
-            </div>
-          </Col>
-        ))}
-      </Row>
+            </Col>
+          ))}
+        </Row>
+      )}
     </div>
   );
 };

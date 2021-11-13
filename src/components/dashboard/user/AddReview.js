@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import swal from "sweetalert";
 import useAuth from "../../../hooks/useAuth";
 
 const AddReview = () => {
@@ -13,7 +14,7 @@ const AddReview = () => {
       .post("https://protected-oasis-88562.herokuapp.com/reviews", data)
       .then((res) => {
         if (res.data.insertedId) {
-          alert("Review added successfully");
+          swal("Good job!", "Your review is being added", "success");
           reset();
         }
       });

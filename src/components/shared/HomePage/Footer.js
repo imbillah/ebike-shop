@@ -2,12 +2,12 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary py-4" style={{ marginTop: "150px" }}>
+    <footer className="bg-custom py-4" style={{ marginTop: "150px" }}>
       <div className="container">
         <div className="row  row-cols-lg-3">
           <div>
             <h3 className="mb-3 text-custom">eBike</h3>
-            <p>Travel More | Discover Yourself</p>
+            <p>Best eBike | Greatest Adventure</p>
             <i className="bi bi-geo-alt-fill text-dark">
               {" "}
               1913 Armbrester Drive, CA
@@ -15,7 +15,7 @@ const Footer = () => {
             <br />
             <i className="bi bi-telephone-fill text-dark"> 714-471-3326</i>
             <br />
-            <i className="bi bi-envelope-fill text-dark"> contact@ebike.net</i>
+            <i className="bi bi-envelope-fill text-dark"> contact@ebike.com</i>
           </div>
           <div>
             <div>
@@ -37,7 +37,7 @@ const Footer = () => {
               className="form-control"
               placeholder="Enter your email"
             />
-            <button className="btn btn-warning mt-3">Submit</button>
+            <button className="btn btn-secondary mt-3">Submit</button>
           </div>
         </div>
       </div>
