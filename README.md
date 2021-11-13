@@ -1,6 +1,6 @@
 # Project Name: eBike | An Single Product Website
 
-### Live Site : [eBike](https://touropia-travel-app.web.app)
+### Live Site : [eBike](https://ebike-online-store.web.app)
 
 ## Technology Used:
 
