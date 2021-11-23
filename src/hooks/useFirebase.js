@@ -48,9 +48,9 @@ const useFirebase = () => {
   };
   // checking user as admin or not
   useEffect(() => {
-    axios(`http://localhost:7000/users/${user.email}`).then((res) =>
-      setAdmin(res.data.admin)
-    );
+    axios(
+      `https://protected-oasis-88562.herokuapp.com/users/${user.email}`
+    ).then((res) => setAdmin(res.data.admin));
   }, [user]);
   //user logout
   const logOut = () => {

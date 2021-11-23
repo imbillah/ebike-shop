@@ -37,7 +37,7 @@ const MyOrder = () => {
           <h5>You didn't order any products yet</h5>
         </div>
       ) : (
-        <Row>
+        <Row className="mx-2">
           {myOrders.map((order) => (
             <Col lg={6} key={order._id}>
               <div

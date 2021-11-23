@@ -30,6 +30,7 @@ const ManageProduct = () => {
       <h2 className="text-center fw-bold text-uppercase text-custom my-3">
         Manage all products
       </h2>
+
       <h5 className="text-center fw-bold text-custom my-3">
         Total Products: {products.length}
       </h5>
@@ -53,9 +54,17 @@ const ManageProduct = () => {
             <tbody key={product._id}>
               <tr>
                 <th scope="row">{index}</th>
-                <td>{product.pname}</td>
+                <td>
+                  <img
+                    src={product.image}
+                    style={{ height: "45px", width: "45px" }}
+                    className="me-3 rd-custom"
+                    alt=""
+                  />
+                  {product.pname}
+                </td>
                 <td>{product.brand}</td>
-                <td>{product.price}</td>
+                <td>$ {product.price}</td>
                 <td>{product.order}</td>
                 <td>
                   <button

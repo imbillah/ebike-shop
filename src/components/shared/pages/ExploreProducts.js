@@ -12,7 +12,7 @@ const ExploreProducts = () => {
     axios("https://protected-oasis-88562.herokuapp.com/products").then((res) =>
       setProducts(res.data)
     );
-  }, []);
+  }, [products]);
   return (
     <>
       <AppBar />
@@ -32,7 +32,7 @@ const ExploreProducts = () => {
                   <Card.Img
                     variant="top"
                     src={product.image}
-                    className="h-75 img-fluid"
+                    style={{ height: "325px" }}
                   />
                   <Card.Body>
                     <Card.Title>

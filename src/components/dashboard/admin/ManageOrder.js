@@ -10,7 +10,7 @@ const ManageOrder = () => {
     fetch("https://protected-oasis-88562.herokuapp.com/orders").then((res) =>
       res.json().then((data) => setUserOrders(data))
     );
-  }, []);
+  }, [userOrders]);
 
   // updating product status
   const status = {

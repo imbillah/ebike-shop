@@ -8,9 +8,9 @@ function Products() {
 
   useEffect(() => {
     axios("https://protected-oasis-88562.herokuapp.com/products").then((res) =>
-      setProducts(res.data)
+      setProducts(res.data.slice(0, 6))
     );
-  }, []);
+  }, [products]);
   return (
     <Container>
       <h2 className="text-center fw-bold top-margin text-uppercase text-custom mb-5">
@@ -24,11 +24,11 @@ function Products() {
         <Row className=" g-3">
           {products.map((product) => (
             <Col lg={4} kew={product._id}>
-              <Card className="h-100 rd-custom">
+              <Card className="h-100  rounded-3">
                 <Card.Img
                   variant="top"
                   src={product.image}
-                  className="h-75 img-fluid"
+                  style={{ height: "325px" }}
                 />
                 <Card.Body>
                   <Card.Title>
